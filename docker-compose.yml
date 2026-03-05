@@ -1,0 +1,20 @@
+services:
+  web:
+    image: nginx:stable-alpine
+    container_name: htmldemo_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/usr/share/nginx/html:ro
+
+  tailwind:
+    image: node:alpine
+    container_name: htmldemo_tailwind
+    working_dir: /app
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true  
+    command: >
+      sh -c "npm install && 
+             npx @tailwindcss/cli -i ./src/input.css -o ./src/style.css --watch"

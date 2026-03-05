@@ -1,0 +1,2 @@
+cp -r /var/www/html/laravel-vuejs ~/laravel-vuejs
+cd ~/laravel-vuejs
